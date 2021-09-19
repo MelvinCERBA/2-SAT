@@ -18,6 +18,14 @@ public class Graph<Label> {
     private int cardinal;
     private ArrayList<LinkedList<Edge>> incidency;
 
+    public int [] tab = {1, 2, 3, -1, -2, -3};
+    public int [][] mat = {{1,-2},{-1,3}, {1,3},{-2,-3}};
+    private SAT sat = new SAT( tab, mat);
+
+    public Graph(SAT sat) {
+
+
+    }
 
     public Graph(int size) {
         cardinal = size;
