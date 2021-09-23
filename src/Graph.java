@@ -55,11 +55,11 @@ public class Graph<Label> {
         }
     }
 
-    public Graph mirror(){
+    public Graph mirror(){ // à implémenter
         return this;
     }
 
-    public List<Integer> ppi_1(){ //premier parcours en profondeur itéré: rend un nouvel ordre de priorité entre les sommets
+    /*public List<Integer> ppi_1(){ //premier parcours en profondeur itéré: rend un nouvel ordre de priorité entre les sommets
         return;
     }
 
@@ -71,7 +71,7 @@ public class Graph<Label> {
 
     public int order() {
         return cardinal;
-    }
+    }*/
 
     public void addArc(int source, int dest, Label label) {
         int i = source;

@@ -14,6 +14,7 @@ public class Main {
         System.out.print(c3.toString());
 
 
+        // Test pour vérifier que le constructeur de SAT depuis un fichier .txt fonctionne
         SAT P = new SAT("E:\\Documents\\Fac\\L3\\ALGO\\tp1_2\\formulas\\formule-2-sat.txt");
         P.print();
 

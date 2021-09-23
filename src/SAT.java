@@ -47,10 +47,10 @@ public class SAT {
         return G;
     }
 
-    public boolean Satisfiable(){
+    /*public boolean Satisfiable(){ //crée le graphe des implications, puis opère l'algorithme de kosaraju dessus
         Graph().
         return true;
-    }
+    }*/
     
     public void print(){ // afficher litterals et clauses pour vérifier le fonctionnement du constructeur
         System.out.println(litterals);
