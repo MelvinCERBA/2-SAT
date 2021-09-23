@@ -1,3 +1,5 @@
+import java.io.*;
+
 public class Main {
     public static void main(String[] args) {
 
@@ -9,6 +11,10 @@ public class Main {
         c3.addArc(2,3,""); // Quel est le propblème ici ?
 
         System.out.print(c3.toString());
+
+
+        SAT P = new SAT("E:\\Documents\\Fac\\L3\\ALGO\\tp1_2\\formulas\\formule-2-sat.txt");
+        P.print();
 
     }
 }
