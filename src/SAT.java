@@ -1,6 +1,7 @@
 
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.io.*;
 import java.util.List;
@@ -8,10 +9,10 @@ import java.util.stream.Collectors;
 
 
 public class SAT {
-    public int [] litterals;
+    public List<Integer> litterals = new ArrayList<>();; //Il faut initialiser la liste pour la première itération de "if (litterals.contains(lit)){}" l.35. On utilise une liste car les arrays sont de taille fixe et cela complique les choses
     public List<List<Integer>> clauses;
 
-    public SAT(int [] lits, List<List<Integer>> cls){
+    public SAT(List<Integer> lits, List<List<Integer>> cls){
         litterals=lits;
         clauses=cls;
     }
@@ -29,11 +30,19 @@ public class SAT {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        for(List<Integer> clause:clauses){
+            for(int lit:clause){
+                if (litterals.contains(lit)){}
+                else
+                    litterals.add(lit);
+            }
+
+        }
 
     }
     
     public void print(){ // afficher litterals et clauses pour vérifier le fonctionnement du constructeur
-        System.out.println(Arrays.toString(litterals));
+        System.out.println(litterals);
         System.out.println(clauses);
     }
 
