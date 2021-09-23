@@ -42,23 +42,14 @@ public class SAT {
 
     }
 
-    public Graph ImplicationsGraph(){
+    public Graph Graph(){
     Graph G = new Graph(this);
-
-
-        /*Graph G = new Graph(litterals.size()); //initialisation d'un nouveau graphe avec un sommet par littéral
-        for(int lit:litterals){                   //Pour chaque littéral de la formule,
-            for(List<Integer> clause:clauses) {   //pour chaque clause de la formule,
-                if(clause.get(0) == lit){         //si la clause commence par le littéral sélectionné:
-                    LinkedList<Graph.Edge> newArc1 = new Graph.Edge(clause.get(0),clause.get(1),"");
-                    if (G.getIncidency().contains()){}   // et que les arcs correspondants à cette clause n'existent pas
-                    G.ad dArc(0, 1, "");   //alors on ajoute ces arcs au graphe
-                }
-
-            }
-        }*/
-
         return G;
+    }
+
+    public boolean Satisfiable(){
+        Graph().
+        return true;
     }
     
     public void print(){ // afficher litterals et clauses pour vérifier le fonctionnement du constructeur

@@ -55,6 +55,20 @@ public class Graph<Label> {
         }
     }
 
+    public Graph mirror(){
+        return this;
+    }
+
+    public List<Integer> ppi_1(){ //premier parcours en profondeur itéré: rend un nouvel ordre de priorité entre les sommets
+        return;
+    }
+
+    public List<List<Integer>> ppi_2(List<Integer>){ //deuxième ppi, utilise l'ordre de priorité donné par le ppi 1 et rend la liste des scc.
+        return;
+    }
+
+    public
+
     public int order() {
         return cardinal;
     }
