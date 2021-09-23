@@ -1,9 +1,10 @@
 import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 
 public class Graph<Label> {
 
-    private class Edge {
+    public class Edge {
         public int source;
         public int destination;
         public Label label;
@@ -18,13 +19,8 @@ public class Graph<Label> {
     private int cardinal;
     private ArrayList<LinkedList<Edge>> incidency;
 
-    //public int [] tab = {1, 2, 3, -1, -2, -3};
-    //public int [][] mat = {{1,-2},{-1,3}, {1,3},{-2,-3}};
-    //private SAT sat = new SAT( tab, mat);
-
-    public Graph(SAT sat) {
-
-
+    public ArrayList<LinkedList<Edge>> getIncidency() {
+        return incidency;
     }
 
     public Graph(int size) {
@@ -35,12 +31,38 @@ public class Graph<Label> {
         }
     }
 
+    public Graph(SAT sat) {
+        cardinal = sat.litterals.size();
+        incidency = new ArrayList<LinkedList<Edge>>(cardinal + 1);
+        for (int i = 0; i < cardinal; i++) {
+            incidency.add(i, new LinkedList<Edge>());
+        }
+        for (int lit : sat.litterals) {                   //Pour chaque littéral de la formule,
+            for (List<Integer> clause : sat.clauses) {   //pour chaque clause de la formule,
+                if (clause.get(0) == lit) {              //si la clause commence par le littéral sélectionné:
+                    Edge newArc1 = new Edge(-clause.get(0), clause.get(1),(Label) ""); // -> arc correspondant à l'implication -x => y pour la clause [xUy]
+                    int i = lit;
+                    if(lit<0){lit = -(2*lit); }      // ( on place les négations dans les cases d'indice pair, car il n'existe pas d'indice négatif )
+                    if (incidency.get(i).contains(newArc1)) {}  // et que les arcs correspondants à cette clause n'existent pas ( il suffit de vérifier l'une des deux implication d'une clause pour savoir si les deux sont déjà présentes
+                    else{
+                        addArc(-clause.get(0), clause.get(1), (Label) "");   //alors on ajoute ces arcs au graphe
+                        addArc(-clause.get(1), clause.get(0), (Label) "");
+                    }
+
+                }
+
+            }
+        }
+    }
+
     public int order() {
         return cardinal;
     }
 
     public void addArc(int source, int dest, Label label) {
-        incidency.get(source).addLast(new Edge(source,dest,label));
+        int i = source;
+        if(source<0){i = -(2*i);}          // on place les négations dans les cases d'indice pair, car il n'existe pas d'indice négatif
+        incidency.get(i).addLast(new Edge(source,dest,label));
     }
 
     public String toString() {
