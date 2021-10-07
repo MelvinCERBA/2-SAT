@@ -18,11 +18,11 @@ public class SAT {
         clauses=cls;
     }
 
-    public SAT(String fileName){
+    public SAT(String fileName){  // https://www.royvanrijn.com/blog/2019/11/sat-solver-in-java/?fbclid=IwAR0rdq4vZb608lHrRUxLXvBRsTF5a24JkmmwEysoBiZTvPMUvxh37fnzqZg
         try {
             clauses = Files.lines(Paths.get(fileName)) //on récupère les lignes du fichier à la destination "fileName" sous forme d'un stream
                     .filter(line -> line.endsWith(" 0")) // On ne garde que les lignes qui terminent par 0
-                    .map(line -> Arrays.stream(line // On map chaque ligne à l'array qui contient les entiers de cette ligne. ex: -2 1 0 devient [-2,1] (on ne garde pas le zero, qui ne sert à rien)
+                    .map(line -> Arrays.stream(line // Dans les 4 prochaines lignes, on map chaque ligne du fichier à une liste qui contient les entiers de cette ligne. ex: -2 1 0 devient [-2,1] (on ne garde pas le zero, qui ne sert à rien)
                             .substring(0, line.length() - 2)  //pour chaque ligne de longueur n, on prend une partie qui commence à l'indice 0 et s'arrete à n-2 (pour éliminer le 0 et l'espace qui le précède)
                             .trim().split("\\s+")) //on découpe la ligne à chaque espace (/s+ correspond à une suite infinie d'espaces consécutifs) ex: "-2 1" devient ["-2","1"]
                             .map(Integer::parseInt) // map à chaque String ainsi obtenu l'entier qui correspond. ex "-2" devient -2

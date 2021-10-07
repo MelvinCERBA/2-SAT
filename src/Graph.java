@@ -4,21 +4,10 @@ import java.util.List;
 
 public class Graph<Label> {
 
-    public class Edge {
-        public int source;
-        public int destination;
-        public Label label;
-
-        public Edge(int from, int to, Label label) {
-            this.source = from;
-            this.destination = to;
-            this.label = label;
-        }
-    }
-
     private int cardinal;
     private ArrayList<LinkedList<Edge>> incidency;
 
+    public int getCardinal(){return cardinal;}
     public ArrayList<LinkedList<Edge>> getIncidency() {
         return incidency;
     }
@@ -33,8 +22,15 @@ public class Graph<Label> {
     }
 
     public Graph(SAT sat) {
-        cardinal = sat.litterals.size();
-        incidency = new ArrayList<LinkedList<Edge>>(cardinal + 1);
+        int litMax=1;
+        for(int k:sat.litterals){
+            if(Math.abs(k)>litMax){
+                litMax=Math.abs(k);                         // On détermine la taille de incidency (par ex une formule ne contenant que les littéraux [1, -1, 3, -3] a besoin d'une liste chainée de taille 6, car -3 est stocké à l'indice 5.
+            }
+        }
+        cardinal = 2*litMax;
+        incidency = new ArrayList<LinkedList<Edge>>();
+
         for (int i = 0; i < cardinal; i++) {
             incidency.add(i, new LinkedList<Edge>());
         }
@@ -55,22 +51,15 @@ public class Graph<Label> {
     }
 
     public Graph mirror(){ // à implémenter
+        Graph G= new Graph(cardinal);
+        for(LinkedList<Edge> l: incidency){
+            for(Edge e:l){
+                G.addArc(e.destination,e.source,e.label);  // Pour chaque arc du graph actuel, on rajoute l'arc opposé au graphe mirroir
+            }
+        }
         return this;
     }
 
-    /*public List<Integer> ppi_1(){ //premier parcours en profondeur itéré: rend un nouvel ordre de priorité entre les sommets
-        return;
-    }
-
-    public List<List<Integer>> ppi_2(List<Integer>){ //deuxième ppi, utilise l'ordre de priorité donné par le ppi 1 et rend la liste des scc.
-        return;
-    }
-
-    public
-
-    public int order() {
-        return cardinal;
-    }*/
 
     public void addArc(int source, int dest, Label label) {
         int i = 2*Math.abs(source);
