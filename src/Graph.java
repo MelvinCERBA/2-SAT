@@ -50,22 +50,15 @@ public class Graph<Label> {
     }
 
     public Graph mirror(){ // à implémenter
+        Graph G= new Graph(cardinal);
+        for(LinkedList<Edge> l: incidency){
+            for(Edge e:l){
+                G.addArc(e.destination,e.source,e.label);
+            }
+        }
         return this;
     }
 
-    /*public List<Integer> ppi_1(){ //premier parcours en profondeur itéré: rend un nouvel ordre de priorité entre les sommets
-        return;
-    }
-
-    public List<List<Integer>> ppi_2(List<Integer>){ //deuxième ppi, utilise l'ordre de priorité donné par le ppi 1 et rend la liste des scc.
-        return;
-    }
-
-    public
-
-    public int order() {
-        return cardinal;
-    }*/
 
     public void addArc(int source, int dest, Label label) {
         int i = 2*Math.abs(source);
