@@ -15,7 +15,7 @@ public class Main {
 
 
         // Test pour vérifier que le constructeur de SAT depuis un fichier .txt fonctionne
-        SAT P = new SAT("E:\\Documents\\Fac\\L3\\ALGO\\tp1_2\\formulas\\formuleSatisfiable");
+        SAT P = new SAT("E:\\Documents\\Fac\\L3\\ALGO\\tp1_2\\formulas\\testSet1\\formula5.txt");
         P.print();
         Graph GraphP = new Graph(P);
         //System.out.println(GraphP.toString());
