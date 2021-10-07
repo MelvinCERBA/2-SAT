@@ -28,7 +28,7 @@ public class Graph<Label> {
             }
         }
         cardinal = 2*litMax;
-        incidency = new ArrayList<LinkedList<Edge>>(cardinal+1 );
+        incidency = new ArrayList<LinkedList<Edge>>();
 
         for (int i = 0; i < cardinal; i++) {
             incidency.add(i, new LinkedList<Edge>());
@@ -53,7 +53,7 @@ public class Graph<Label> {
         Graph G= new Graph(cardinal);
         for(LinkedList<Edge> l: incidency){
             for(Edge e:l){
-                G.addArc(e.destination,e.source,e.label);
+                G.addArc(e.destination,e.source,e.label);  // Pour chaque arc du graph actuel, on rajoute l'arc opposé au graphe mirroir
             }
         }
         return this;
