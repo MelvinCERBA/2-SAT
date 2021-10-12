@@ -1,30 +1,24 @@
 import java.io.*;
 
+import static java.lang.System.exit;
+
 public class Main {
     public static void main(String[] args) {
 
-//        Graph<String> c3;
-//
-//        c3 = new Graph<String>(3);
-//        c3.addArc(1,-1,"");
-//        c3.addArc(-1,2,"");
-//        c3.addArc(2,3,""); // Quel est le propblème ici ?
-//        c3.addArc(-1,3,"");
-//
-//        System.out.print(c3.toString());
-
-
-        // Test pour vérifier que le constructeur de SAT depuis un fichier .txt fonctionne
-        SAT P = new SAT("E:\\Documents\\Fac\\L3\\ALGO\\tp1_2\\formulas\\testSet1\\formula5.txt");
-        P.print();
-        Graph GraphP = new Graph(P);
-        //System.out.println(GraphP.toString());
-        Kasaraju K = new Kasaraju(GraphP);
-        if (K.isSatisfiable()) {
-            System.out.println("satisfiable");
-        } else {
-            System.out.println("non satisfiable");
-
+        String filename = "formulas/testSet0/formula6.txt";
+        if (0 < args.length) {
+            filename = args[0];
         }
+
+        SAT P = new SAT(filename);
+
+        if (P.Satisfiable()) {
+            System.out.println("Formula " + filename + ": satisfiable");
+            exit(0);
+        } else {
+            System.out.println("Formula " + filename + ": unsatisfiable");
+            exit(-1);
+        }
+        exit(0);
     }
 }
