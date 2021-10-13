@@ -12,12 +12,18 @@ public class Kasaraju {
 
     public boolean isSatisfiable(){
         PPI ppi_1 = new PPI(G, Optional.empty()); // On appelle le ppi une première fois pour obtenir une nouvelle heuristique
+        //System.out.println("PPI 1: la nouvelle heuristique est " + ppi_1.getNewHeuristique().toString());
         PPI ppi_2 = new PPI(G.mirror(),Optional.of(ppi_1.getNewHeuristique()));  // On appelle le ppi sur le graphe miroir avec la nouvelle heuristique
+        //System.out.println("Graphe miroir := " + G.mirror().toString());
+        //System.out.println("PPI 2: les SCC sont :");
+        for(LinkedList<Integer> scc: ppi_2.getSCC()){
+            //System.out.println(scc.toString());
+        }
 
         for(LinkedList<Integer> scc: ppi_2.getSCC()){ // On test la présence d'un littéral et de sa négation dans les SCC rendues par le deuxième appel au ppi.
             for(int i:scc){
                 for(int j:scc){
-                    System.out.println("i= " + i+ "j= " + j);
+                    //System.out.println("i= " + i+ "j= " + j);
                     if(i==-j){return false;}  // Si P et nonP sont dans la meme SCC, la formule n'est pas satisfiable.
                 }
             }

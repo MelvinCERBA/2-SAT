@@ -37,7 +37,9 @@ public class PPI {
             if(parcourus.contains(s)){} //Si le sommet a déjà été parcouru, on ne l'explore pas
             else{
                 scc= new LinkedList<>(); // On crée une nouvelle composante connexe
+                //System.out.println("création d'une nouvelle scc.");
                 scc.add(s);              // et on ajoute le sommet parcouru à celle-ci
+                //System.out.println("parcour: scc = " + scc.toString());
 
                 parcourus.add(s);  // On ajoute le sommet aux parcourus pour ne pas revenir dessus plus tard
 
@@ -51,7 +53,9 @@ public class PPI {
                     }
                 }
                 newHeuristique.addFirst(s); // On ajoute le sommet dont on sort à la première position de la nouvelle heuristique
+                //System.out.println("parcour: newH = " + newHeuristique.toString());
                 SCC.add(scc); //On ajoute la composante fortement connexe à la liste des scc
+                //System.out.println("On stocke la scc dans SCC.");
             }
         }
     }
@@ -60,19 +64,23 @@ public class PPI {
         if(parcourus.contains(sommet)){} // si le sommet a déjà été parcouru, on ne l'explore pas une seconde fois
         else {
             scc.add(sommet);  // On ajoute le sommet à la composante fortement connexe courante
+            //System.out.println("explore: scc = " + scc.toString());
             parcourus.add(sommet); // On ajoute le sommet aux parcourus
 
 
+            int pos = 2*Math.abs(sommet);       //
+            if(sommet<0){pos = pos-1;}          // <- on calcul l'indice du sommet dans incidency (cases impairs réservées aux négations)
+            else pos = pos-2;                   //
+            //System.out.println("On va chercher " + sommet + " à la position " + pos);
+            LinkedList<Edge> arcs= incidency.get(pos); // On récupère la liste chainée des arcs partants du sommet exploré
+
             for(int x:Heuristique){ // on veut parcourir les sommets accessibles selon l'ordre de priorité donné par l'heuristique
-                int pos = 2*Math.abs(sommet);       //
-                if(sommet<0){pos = pos-1;}          // <- on calcul l'indice du sommet dans incidency (cases impairs réservées aux négations)
-                else pos = pos-2;                   //
-                LinkedList<Edge> arcs= incidency.get(pos); // On récupère la liste chainée des arcs partants du sommet exploré
                 for(Edge a:arcs){
                     if(a.destination==x){this.explore(a.destination);} // si la destination de a est le prochain sommet selon l'heuristique, on l'explore
                 }
             }
             newHeuristique.addFirst(sommet); // On ajoute le sommet dont on sort à la première position de la nouvelle heuristique
+            //System.out.println("explore: newH = " + newHeuristique.toString());
         }
     }
 //

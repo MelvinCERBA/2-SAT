@@ -51,12 +51,14 @@ public class Graph<Label> {
 
     public Graph mirror(){ // à implémenter
         Graph G= new Graph(cardinal);
-        for(LinkedList<Edge> l: incidency){
-            for(Edge e:l){
-                G.addArc(e.destination,e.source,e.label);  // Pour chaque arc du graph actuel, on rajoute l'arc opposé au graphe mirroir
+        for(LinkedList<Edge> arcs: incidency){
+            //System.out.println("arcs = " + arcs.toString());
+            for(Edge a: arcs){
+                //System.out.println("on transforme (" + a.source +","+ a.destination + ") en (" + a.destination +","+ a.source + ")");
+                G.addArc(a.destination,a.source,a.label);  // Pour chaque arc du graph actuel, on rajoute l'arc opposé au graphe mirroir
             }
         }
-        return this;
+        return G;
     }
 
 

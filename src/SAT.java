@@ -34,9 +34,12 @@ public class SAT {
         for(List<Integer> clause:clauses){
             for(int lit:clause){
                 if (litterals.contains(lit)){}
-                else
+                else{
                     //System.out.println(lit);
                     litterals.add(lit);
+                    if (litterals.contains(-lit)){}
+                    else{litterals.add(-lit);}
+                }
             }
 
         }
