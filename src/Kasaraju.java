@@ -17,7 +17,7 @@ public class Kasaraju {
         for(LinkedList<Integer> scc: ppi_2.getSCC()){ // On test la présence d'un littéral et de sa négation dans les SCC rendues par le deuxième appel au ppi.
             for(int i:scc){
                 for(int j:scc){
-                    //System.out.println("i= " + i+ "j= " + j);
+                    System.out.println("i= " + i+ "j= " + j);
                     if(i==-j){return false;}  // Si P et nonP sont dans la meme SCC, la formule n'est pas satisfiable.
                 }
             }

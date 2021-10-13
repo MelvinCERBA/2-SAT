@@ -3,25 +3,26 @@
 MAINCLASS=Main
 ## Le chemin vers où votre classe compilée est installée
 # Renommez si nécessaire
-INSTALLDIR=out/production/TP1
+INSTALLDIR=out\production
 
 # INSTALLATION COURANTE
 JAVAC=javac
-
 
 MAINDIR=$(dir $(subst .,/,$(MAINCLASS)))
 
 compile: $(subst .,/,$(MAINCLASS)).class
 
 %.class: %.java
-	$(JAVAC) -g -d ../$(INSTALLDIR) $*.java
+	javac -g  -d ../$(INSTALLDIR) $*.java
 
 clean:
-	- rm $(MAINDIR)*.class
+	rm $(MAINDIR)*.class
 
 install:
 	- cp -r $(MAINDIR)*.class ../$(INSTALLDIR)/$(MAINDIR)
 
 cleanInstall:
 	rm  ../$(INSTALLDIR)/$(MAINDIR)*.class
+
+
 
