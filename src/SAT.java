@@ -35,6 +35,7 @@ public class SAT {
             for(int lit:clause){
                 if (litterals.contains(lit)){}
                 else
+                    //System.out.println(lit);
                     litterals.add(lit);
             }
 

@@ -5,7 +5,7 @@ import static java.lang.System.exit;
 public class Main {
     public static void main(String[] args) {
 
-        String filename = "formulas/testSet0/formula6.txt";
+        String filename = "C:\\Users\\Winnie\\IdeaProjects\\2-SAT\\formulas\\testSet1\\formula0.txt";
         if (0 < args.length) {
             filename = args[0];
         }
@@ -17,7 +17,7 @@ public class Main {
             exit(0);
         } else {
             System.out.println("Formula " + filename + ": unsatisfiable");
-            exit(-1);
+            exit(0);
         }
         exit(0);
     }
