@@ -11,7 +11,6 @@ public class Graph<Label> {
     public ArrayList<LinkedList<Edge>> getIncidency() {
         return incidency;
     }
-    public int getCardinal(){return  cardinal}
 
     public Graph(int size) {
         cardinal = size;
