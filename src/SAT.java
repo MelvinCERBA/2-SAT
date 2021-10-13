@@ -48,10 +48,11 @@ public class SAT {
         return G;
     }
 
-    /*public boolean Satisfiable(){ //crée le graphe des implications, puis opère l'algorithme de kosaraju dessus
-        Graph().
-        return true;
-    }*/
+    public boolean Satisfiable(){ //crée le graphe des implications, puis opère l'algorithme de kosaraju dessus
+        Graph graph = new Graph(this);
+        Kasaraju K = new Kasaraju(graph);
+        return K.isSatisfiable();
+    }
     
     public void print(){ // afficher litterals et clauses pour vérifier le fonctionnement du constructeur
         System.out.println(litterals);
