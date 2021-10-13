@@ -5,7 +5,7 @@ import static java.lang.System.exit;
 public class Main {
     public static void main(String[] args) {
 
-        String filename = "C:\\Users\\Winnie\\IdeaProjects\\2-SAT\\formulas\\testSet1\\formula0.txt";
+        String filename = "E:\\Documents\\Fac\\L3\\ALGO\\tp1_2\\formulas\\testSet1\\formula0.txt";
         if (0 < args.length) {
             filename = args[0];
         }
